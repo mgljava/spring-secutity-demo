@@ -1,6 +1,6 @@
 package com.github.mgljava.springsecuritydemo.secutity;
 
-import com.github.mgljava.springsecuritydemo.config.CacheUser;
+import com.github.mgljava.springsecuritydemo.config.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
-  private CacheUser cacheUser;
+  private User user;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     auth
         .inMemoryAuthentication()
-        .withUser("11").password("11").roles("USER");
+        .withUser(user.getUser()).password(user.getPassword()).roles("USER");
   }
 
   @Bean

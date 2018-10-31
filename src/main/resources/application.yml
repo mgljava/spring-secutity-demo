@@ -1,0 +1,4 @@
+cache:
+  admin:
+    user: admin
+    password: password
